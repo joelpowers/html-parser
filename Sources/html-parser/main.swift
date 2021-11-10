@@ -1,39 +1,13 @@
 import Foundation
+import SwiftSoup
 
-print("Hello, world");
-/*
-* this struct will wrap all the networking functionality
-*/
-struct HTTPFetcher {
-    
-    enum HTTPRetrieveError: Error {
-        case invalidURL
-        case missingData
-    }
-    // todo find a way better name for this
-    static func wrapURLSession(address: String) async throws -> String {
-        guard let url = URL(string: address) else {
-            throw HTTPRetrieveError.invalidURL
-        }
-        // Use the async variant of URLSession to fetch data
-        let (data, _) = try await URLSession.shared.data(from: url)
-        return String(decoding: data, as: UTF8.self)
-    }
-
+do {
+   let html = "<html><head><title>First parse</title></head>"
+       + "<body><p>Parsed HTML into a doc.</p></body></html>"
+   let doc: Document = try SwiftSoup.parse(html)
+   print(try doc.text())
+} catch Exception.Error(_, let message) {
+    print(message)
+} catch {
+    print("error")
 }
-
-/*
-*  Must wrap call to async function in a Task.
-*  TODO - find a better way to do this.
-*/
-let handle = Task {
-    do {  
-        let rawHtml = try await HTTPFetcher.wrapURLSession(address: "https://www.example.com")
-        print(rawHtml)
-    } catch {
-        print("Request failed with error: \(error)")
-    }
-}
-
-// CLI will quit before the fetch returns.  Sleep to allow async functions to return
-sleep(10)

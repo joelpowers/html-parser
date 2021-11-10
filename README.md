@@ -1,6 +1,6 @@
 # html-parser
 
-command line tool that parses html. Using as a vehicle to learn swift, potentially a scraper to mine data.
+Pivot - SwiftSoup looks like a full feature html parser. Will use it as a scrapper - financial data and/or sports scores
 
 ## How I created this
 
@@ -18,10 +18,3 @@ These are artificial contraints so I can focus on learning swift the language an
 -  VSCode, commandline/terminal
 
 ## Next steps
-
--  download html page using
-   -  async await?
-   -  NIO?
-   -  get raw html, echo to cli
--  Start recursive tag parser, learn from that,
--  Pass url on command line
