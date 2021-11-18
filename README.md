@@ -18,3 +18,7 @@ These are artificial contraints so I can focus on learning swift the language an
 -  VSCode, commandline/terminal
 
 ## Next steps
+
+-  figure out how to wait for a task to complete in cli app
+-  parse out ncaa football scores
+-  Using way old version of swiftsoup - update
